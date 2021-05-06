@@ -32,6 +32,8 @@ class KalmanPerson():
     ##i am uncertain about it untill i hit the target more than once
     if self.state == "U" and self.hits >= self.uncertaintyCount:
       self.state = "C"
+    if self.state =="M":
+        self.state = "C"
 
   # at some frames some tracks may not be detected or matched *Occuleded*
   def markUnmatched(self):
@@ -39,8 +41,8 @@ class KalmanPerson():
       self.state = "D"
     elif self.consecutivePredictionCount > self.maxMisses:
       self.state = "D"
-    # elif self.state=="C":
-    #   self.state="M"
+    elif self.state=="C":
+      self.state="M"
 
   def getState(self):
     return self.state
