@@ -60,8 +60,8 @@ END LOOP
  Q and R covariance matrices are assumed to be independent and normally distributed.
  Q is chosen to be small as it correlate with how well your Object Detection Model Performs.
  R was assumed and adopted from the official Repository of SORT. However, someone can try to estimate such matrix from this [paper](https://ieeexplore.ieee.org/document/6719478).
-#### State X is (nx1), where n=8 (dimensions) =[X,Y,A,H,Vx,Vy,Va,Vh]
-####  Measurement  Z vector is [X,Y,A,H] (Object Detection Model)
+-  #### State X is (nx1), where n=8 (dimensions) =[X,Y,A,H,Vx,Vy,Va,Vh]
+-  ####  Measurement  Z vector is [X,Y,A,H] (Object Detection Model)
    -    X (bounding box center position along the x axis)
    -    Y (bounding box center position along the y axis)
    -    A (Aspect Ratio of the bounding box calculaed by Width/Height)
