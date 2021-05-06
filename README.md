@@ -22,7 +22,6 @@ Kalman Filter estimates the state vector X of a discrete-time controlled process
 
  Q and R covariance matrices are assumed to be independent and normally distributed.
 
-y(t)=y(to) - <del>ahmed </del> 
 
 # Tracking with constant velocity (linear observation model)
 #### y<sup>''</sup> (t)= 0 (acceleration a)  (constant Velocity model) 
