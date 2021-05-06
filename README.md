@@ -10,7 +10,7 @@ Kalman Filter estimates the state vector X of a discrete-time controlled process
 ---
 ## Using Kalman Tracker (SORT) with YOLOV4
 
-### Colab Example (Oxford TownCentre) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/16g9ovKNglXNvJXIW8E4Hqg0vjHRg36Q-?usp=sharing)
+### Colab Example Enable GPU (Oxford TownCentre) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/16g9ovKNglXNvJXIW8E4Hqg0vjHRg36Q-?usp=sharing)
 
 ### Prerequisites
    -  Numpy
