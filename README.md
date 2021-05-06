@@ -25,18 +25,18 @@ Kalman Filter estimates the state vector X of a discrete-time controlled process
 $ git clone https://github.com/marwankefah/Kalman-Tracking-Single-Camera
 ```
 ```
-$ from KalmanTrackingSingleCamera.src import tracking
-$ from KalmanTrackingSingleCamera.src import helpers as hp 
-$ tracker=tracking.KalmanTracking(IOUThreshold=0.3 ,removeTrackAfternFramesThres=40,uncertaintyCount=1)
+ from KalmanTrackingSingleCamera.src import tracking
+ from KalmanTrackingSingleCamera.src import helpers as hp 
+ tracker=tracking.KalmanTracking(IOUThreshold=0.3 ,removeTrackAfternFramesThres=40,uncertaintyCount=1)
  
 LOOP 
-$$ GET DETECTION FROM YOUR DETECTION MODEL [[xminNew, yminNew, xmaxNew, ymaxNew],....]
-$$ tracker.correctAll(detections)
-$$ trackedCoordinates = [t.getMean()[:4] for t in tracker.trackedPeople if t.getState()=="C"]
-$$ trackedIds=[t.id for t in tracker.trackedPeople if t.getState()=="C"]
-$$ correctedDetNpArr = hp.KalmanMeasuresTobbox(np.asarray(trackedCoordinates, dtype=np.float32).reshape(-1,4))
-$$ correctedDetNpArr now have the coordinates for all the Confirmed ("C") tracks in your system.
-$$ correctedDetNpArr==[[xminNew, yminNew, xmaxNew, ymaxNew],...] 
+ GET DETECTION FROM YOUR DETECTION MODEL [[xminNew, yminNew, xmaxNew, ymaxNew],....]
+ tracker.correctAll(detections)
+ trackedCoordinates = [t.getMean()[:4] for t in tracker.trackedPeople if t.getState()=="C"]
+ trackedIds=[t.id for t in tracker.trackedPeople if t.getState()=="C"]
+ correctedDetNpArr = hp.KalmanMeasuresTobbox(np.asarray(trackedCoordinates, dtype=np.float32).reshape(-1,4))
+ correctedDetNpArr now have the coordinates for all the Confirmed ("C") tracks in your system.
+ correctedDetNpArr==[[xminNew, yminNew, xmaxNew, ymaxNew],...] 
 END LOOP    
 ```
 
