@@ -9,14 +9,14 @@ Kalman Filter estimates the state vector X of a discrete-time controlled process
 
 ---
 ## Using Kalman Tracker (SORT) with YOLOV4
-![result1](https://github.com/marwankefah/emotionRecognition/blob/master/result1.jpg)
 
-## Google Colab Example (Oxford TownCentre)
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/16g9ovKNglXNvJXIW8E4Hqg0vjHRg36Q-?usp=sharing)
+### Colab Example (Oxford TownCentre) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/16g9ovKNglXNvJXIW8E4Hqg0vjHRg36Q-?usp=sharing)
 
-# Prerequisites
+### Prerequisites
    -  Numpy
    -  scipy.optimize.linear_sum_assignment
+
+![result1](https://github.com/marwankefah/Kalman-Tracking-Single-Camera/blob/master/sampleTracked.gif)
 
 
 -  removeTrackAfternFramesThres  - Number of frames to try to match a missed object before you delete it
@@ -30,7 +30,7 @@ $ from KalmanTrackingSingleCamera.src import helpers as hp
 $ tracker=tracking.KalmanTracking(IOUThreshold=0.3 ,removeTrackAfternFramesThres=40,uncertaintyCount=1)
  
 LOOP 
-$$ GET DETECTION FROM YOUR DETECTION MODEL [[xminNew, yminNew, xmaxNew, ymaxNew],[xminNew, yminNew, xmaxNew, ymaxNew],....]
+$$ GET DETECTION FROM YOUR DETECTION MODEL [[xminNew, yminNew, xmaxNew, ymaxNew],....]
 $$ tracker.correctAll(detections)
 $$ trackedCoordinates = [t.getMean()[:4] for t in tracker.trackedPeople if t.getState()=="C"]
 $$ trackedIds=[t.id for t in tracker.trackedPeople if t.getState()=="C"]
