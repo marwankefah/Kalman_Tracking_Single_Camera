@@ -25,8 +25,8 @@ Kalman Filter estimates the state vector X of a discrete-time controlled process
 $ git clone https://github.com/marwankefah/Kalman-Tracking-Single-Camera
 ```
 ```
- from KalmanTrackingSingleCamera.src import tracking
- from KalmanTrackingSingleCamera.src import helpers as hp 
+ from Kalman_Tracking_Single_Camera.src import tracking
+ from Kalman_Tracking_Single_Camera.src import helpers as hp 
  tracker=tracking.KalmanTracking(IOUThreshold=0.3 ,removeTrackAfternFramesThres=40,uncertaintyCount=1)
  
 LOOP 
