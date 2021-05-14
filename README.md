@@ -54,7 +54,7 @@ END LOOP
    -    B  (Matrix that maps actions to states) 
    -    U  (Actions Taken)
    -    C  (Matrix that maps mesurement to state)
-   -    R  (Process/Observational Noise, noise comming from the motion model)
+   -    R  (Process Noise, noise comming from the motion model)
    -    Q  (Measurement Noise, noise comming from the object detection model)
 
  Q and R covariance matrices are assumed to be independent and normally distributed.
