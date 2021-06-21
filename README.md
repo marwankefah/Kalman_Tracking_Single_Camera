@@ -9,14 +9,14 @@ Kalman Filter estimates the state vector X of a discrete-time controlled process
 
 ---
 ## Using Kalman Tracker (SORT) with YOLOV4
-![result1](https://github.com/marwankefah/emotionRecognition/blob/master/result1.jpg)
 
-## Google Colab Example (Oxford TownCentre)
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/16g9ovKNglXNvJXIW8E4Hqg0vjHRg36Q-?usp=sharing)
+### Colab Example Enable GPU (Oxford TownCentre) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/16g9ovKNglXNvJXIW8E4Hqg0vjHRg36Q-?usp=sharing)
 
-# Prerequisites
+### Prerequisites
    -  Numpy
    -  scipy.optimize.linear_sum_assignment
+
+![result1](https://github.com/marwankefah/Kalman-Tracking-Single-Camera/blob/master/sampleTracked.gif)
 
 
 -  removeTrackAfternFramesThres  - Number of frames to try to match a missed object before you delete it
@@ -25,18 +25,18 @@ Kalman Filter estimates the state vector X of a discrete-time controlled process
 $ git clone https://github.com/marwankefah/Kalman-Tracking-Single-Camera
 ```
 ```
-$ from KalmanTrackingSingleCamera.src import tracking
-$ from KalmanTrackingSingleCamera.src import helpers as hp 
-$ tracker=tracking.KalmanTracking(IOUThreshold=0.3 ,removeTrackAfternFramesThres=40,uncertaintyCount=1)
+ from Kalman_Tracking_Single_Camera.src import tracking
+ from Kalman_Tracking_Single_Camera.src import helpers as hp 
+ tracker=tracking.KalmanTracking(IOUThreshold=0.3 ,removeTrackAfternFramesThres=40,uncertaintyCount=1)
  
 LOOP 
-$$ GET DETECTION FROM YOUR DETECTION MODEL [[xminNew, yminNew, xmaxNew, ymaxNew],[xminNew, yminNew, xmaxNew, ymaxNew],....]
-$$ tracker.correctAll(detections)
-$$ trackedCoordinates = [t.getMean()[:4] for t in tracker.trackedPeople if t.getState()=="C"]
-$$ trackedIds=[t.id for t in tracker.trackedPeople if t.getState()=="C"]
-$$ correctedDetNpArr = hp.KalmanMeasuresTobbox(np.asarray(trackedCoordinates, dtype=np.float32).reshape(-1,4))
-$$ correctedDetNpArr now have the coordinates for all the Confirmed ("C") tracks in your system.
-$$ correctedDetNpArr==[[xminNew, yminNew, xmaxNew, ymaxNew],...] 
+ GET DETECTION FROM YOUR DETECTION MODEL [[xminNew, yminNew, xmaxNew, ymaxNew],....]
+ tracker.correctAll(detections)
+ trackedCoordinates = [t.getMean()[:4] for t in tracker.trackedPeople if t.getState()=="C"]
+ trackedIds=[t.id for t in tracker.trackedPeople if t.getState()=="C"]
+ correctedDetNpArr = hp.KalmanMeasuresTobbox(np.asarray(trackedCoordinates, dtype=np.float32).reshape(-1,4))
+ correctedDetNpArr now have the coordinates for all the Confirmed ("C") tracks in your system.
+ correctedDetNpArr==[[xminNew, yminNew, xmaxNew, ymaxNew],...] 
 END LOOP    
 ```
 
@@ -54,14 +54,14 @@ END LOOP
    -    B  (Matrix that maps actions to states) 
    -    U  (Actions Taken)
    -    C  (Matrix that maps mesurement to state)
-   -    R  (Process/Observational Noise, noise comming from the motion model)
+   -    R  (Process Noise, noise comming from the motion model)
    -    Q  (Measurement Noise, noise comming from the object detection model)
 
  Q and R covariance matrices are assumed to be independent and normally distributed.
  Q is chosen to be small as it correlate with how well your Object Detection Model Performs.
  R was assumed and adopted from the official Repository of SORT. However, someone can try to estimate such matrix from this [paper](https://ieeexplore.ieee.org/document/6719478).
-#### State X is (nx1), where n=8 (dimensions) =[X,Y,A,H,Vx,Vy,Va,Vh]
-####  Measurement  Z vector is [X,Y,A,H] (Object Detection Model)
+-  #### State X is (nx1), where n=8 (dimensions) =[X,Y,A,H,Vx,Vy,Va,Vh]
+-  ####  Measurement  Z vector is [X,Y,A,H] (Object Detection Model)
    -    X (bounding box center position along the x axis)
    -    Y (bounding box center position along the y axis)
    -    A (Aspect Ratio of the bounding box calculaed by Width/Height)
