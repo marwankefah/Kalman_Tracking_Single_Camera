@@ -76,3 +76,10 @@ class KalmanTracking():
             self.id += 1
 
         self.trackedPeople = [person for person in self.trackedPeople if person.getState() != "D"]
+    def match(self,detections,state):
+        self.correctAll(detections)
+        trackedCoordinates = [t.getMean()[:4] for t in self.trackedPeople if t.getState() == state]
+        trackedIds = [t.id + 1 for t in self.trackedPeople if t.getState() == state]
+        correctedDetNpArr = KalmanMeasuresTobbox(np.asarray(trackedCoordinates, dtype=np.float32).reshape(-1, 4))
+        return np.concatenate((correctedDetNpArr, np.array(trackedIds).reshape(-1, 1)), axis=1) if len(
+            trackedIds) != 0 else []
