@@ -31,12 +31,8 @@ $ git clone https://github.com/marwankefah/Kalman-Tracking-Single-Camera
  
 LOOP 
  GET DETECTION FROM YOUR DETECTION MODEL [[xminNew, yminNew, xmaxNew, ymaxNew],....]
- tracker.correctAll(detections)
- trackedCoordinates = [t.getMean()[:4] for t in tracker.trackedPeople if t.getState()=="C"]
- trackedIds=[t.id for t in tracker.trackedPeople if t.getState()=="C"]
- correctedDetNpArr = hp.KalmanMeasuresTobbox(np.asarray(trackedCoordinates, dtype=np.float32).reshape(-1,4))
- correctedDetNpArr now have the coordinates for all the Confirmed ("C") tracks in your system.
- correctedDetNpArr==[[xminNew, yminNew, xmaxNew, ymaxNew],...] 
+ ## Return trackers in the form [[id,[xminNew, yminNew, xmaxNew, ymaxNew]],...] that matches the confirmed state
+ trackerstracker.match(detections,state="C")
 END LOOP    
 ```
 
