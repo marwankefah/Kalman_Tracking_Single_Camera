@@ -32,7 +32,7 @@ $ git clone https://github.com/marwankefah/Kalman-Tracking-Single-Camera
 LOOP 
  GET DETECTION FROM YOUR DETECTION MODEL [[xminNew, yminNew, xmaxNew, ymaxNew],....]
  ## Return trackers in the form [[id,[xminNew, yminNew, xmaxNew, ymaxNew]],...] that matches the confirmed state
- trackerstracker.match(detections,state="C")
+ trackers=tracker.match(detections,state="C")
 END LOOP    
 ```
 
